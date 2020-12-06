@@ -1,0 +1,13 @@
+[package]
+name = "tm_light_is_where"
+version = "0.1.0"
+authors = ["Jonathan Nilsson <jonathan@voysys.se>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+color_space = "0.5"
+tm-rs = "2020.11.11"
+tm-derive = "2020.11.1"
