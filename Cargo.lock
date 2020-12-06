@@ -26,12 +26,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "33954243bd79057c2de7338850b85983a44588021f8a5fee574a8888c6de4344"
 
 [[package]]
-name = "color_space"
-version = "0.5.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3776b2bcc4e914db501bb9be9572dd706e344b9eb8f882894f3daa651d281381"
-
-[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -108,8 +102,6 @@ dependencies = [
 [[package]]
 name = "tm-derive"
 version = "2020.11.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "033c7cdd6ebb895121e245f6613129739e40695aaa9ad8df49c0bba99fbe9c6f"
 dependencies = [
  "Inflector",
  "proc-macro2",
@@ -120,8 +112,6 @@ dependencies = [
 [[package]]
 name = "tm-rs"
 version = "2020.11.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "48fc3fa5b5ab4c89eff9ad92b674e930a2a0da07d57b90c6b4fdf825f0002cba"
 dependencies = [
  "anymap",
  "lazy_static",
@@ -139,7 +129,6 @@ checksum = "a67069e3066b4e8ab9cf6069e7dca182f46a17649344925c7fa6f28a3a2d8b01"
 name = "tm_light_is_where"
 version = "0.1.0"
 dependencies = [
- "color_space",
  "tm-derive",
  "tm-rs",
 ]

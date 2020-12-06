@@ -44,18 +44,18 @@ children: [
 					__uuid: "a86de195-fb5b-4aeb-cc31-237f4ae3a7f7"
 					__prototype_type: "tm_position"
 					__prototype_uuid: "df04aaae-1849-1fbd-6dff-318e50ed2a76"
-					x: 10.66855239868164
-					y: 4.980159282684326
-					z: -8.197910308837891
+					x: -3.60600757598877
+					y: 6.900933265686035
+					z: -1.292912721633911
 				}
 				rotation: {
 					__uuid: "e2457741-5b03-001e-10cb-ca67c9071cec"
 					__prototype_type: "tm_rotation"
 					__prototype_uuid: "b8841980-50d5-d771-c3e3-2c207e2d70f6"
-					x: -0.3159854114055634
-					y: -0.3596047461032867
-					z: -0.1308853924274445
-					w: 0.8681628108024597
+					x: -0.5806035399436951
+					y: 1.835295471153131e-08
+					z: 2.573654001025716e-08
+					w: 0.8141864538192749
 				}
 				scale: {
 					__uuid: "a013b301-134f-a40e-c531-3e223a0131d8"
@@ -91,5 +91,68 @@ children: [
 		__prototype_uuid: "3ad88a64-2b81-508b-4e84-4160cc346b12"
 		sort_order: 101
 	}
+	{
+		__uuid: "95caeeac-73fe-794d-59db-c2d6b588399a"
+		__prototype_type: "tm_entity"
+		__prototype_uuid: "1d6fced5-4f29-04d8-58d5-3915f1ab1e23"
+		name: "player"
+		components__instantiated: [
+			{
+				__type: "tm_link_component"
+				__uuid: "637b8eb0-d23c-9a3b-052e-5316fb7e30e2"
+				__prototype_type: "tm_link_component"
+				__prototype_uuid: "3aff22df-547f-ccdc-e1f2-3bd54c8882f0"
+				position: {
+					__uuid: "b177b512-4e72-300a-27d7-568e1c4317b3"
+					__prototype_type: "tm_position"
+					__prototype_uuid: "a201189a-d612-faab-279e-3de34a576e77"
+					x: 2.679311275482178
+					z: -1.387298583984375
+				}
+				rotation: {
+					__uuid: "6231dc98-3d05-04a3-d326-4363f960a29b"
+					__prototype_type: "tm_rotation"
+					__prototype_uuid: "c6461b39-0dc0-3a14-f9d7-19014d21a5bb"
+				}
+				scale: {
+					__uuid: "14d1bffd-816f-d908-f76b-2552aac89683"
+					__prototype_type: "tm_scale"
+					__prototype_uuid: "181b57e6-d204-c4e8-582b-59250f2a2519"
+				}
+			}
+		]
+		sort_order: 102
+	}
+	{
+		__uuid: "70863e4d-1cd4-c24c-0c0f-ba4e50186fb6"
+		__prototype_type: "tm_entity"
+		__prototype_uuid: "72ac0bb5-9376-9a69-cd9c-d07408df94f1"
+		name: "floor_tile"
+		components__instantiated: [
+			{
+				__type: "tm_link_component"
+				__uuid: "344ff581-f907-60c3-2481-ba09b46be8c6"
+				__prototype_type: "tm_link_component"
+				__prototype_uuid: "2608bcaf-3232-b9bc-03eb-61f09e4db073"
+				position: {
+					__uuid: "b2477c19-7518-c28b-c2ce-4b6e6cd7dfd5"
+					__prototype_type: "tm_position"
+					__prototype_uuid: "f98e2785-59a0-afb4-29d2-970ce6398cae"
+					x: 0
+					z: 0
+				}
+				rotation: {
+					__uuid: "ce5e90ab-88fb-9666-7977-6f32971a5432"
+					__prototype_type: "tm_rotation"
+					__prototype_uuid: "d775ce95-425c-83b4-e5e3-177f707b2a45"
+				}
+				scale: {
+					__uuid: "767a439d-69f7-fb92-ecce-e92699362b0e"
+					__prototype_type: "tm_scale"
+					__prototype_uuid: "5ac22453-fb7a-665f-48e9-1c0157b1bca0"
+				}
+			}
+		]
+		sort_order: 103
+	}
 ]
-__asset_uuid: "2f38c594-904e-ca42-f5c0-50cf10c34c67"

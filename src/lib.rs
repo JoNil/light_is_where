@@ -1,57 +1,70 @@
-use color_space::{FromColor, Hsv, Rgb};
 use tm_derive::Component;
 use tm_rs::{
     add_or_remove_entity_simulation, api,
     component::{ComponentsIterator, Read, Write},
     components::{graph::GraphComponent, light::LightComponent},
     entity::{EntityApi, EntityApiInstanceMut},
+    ffi::{tm_tt_id_t, tm_tt_id_t__bindgen_ty_1},
     graph_interpreter::GraphInterpreterApi,
     log::LogApi,
     the_truth::TheTruthApi,
+    the_truth_assets::TheTruthAssetsApi,
     tm_plugin, Vec3,
 };
 
 #[derive(Copy, Clone, Default, Component)]
-struct LightDistanceComponent2 {
-    #[property(default = 1.0)]
-    intensity: f32,
+struct WallSpawnerComponent {
+    has_run: bool,
 }
 
 fn engine_update(
-    _entity_api: &mut EntityApiInstanceMut,
-    components: ComponentsIterator<(
-        Read<LightDistanceComponent2>,
-        Write<LightComponent>,
-        Read<GraphComponent>,
-    )>,
+    entity_api: &mut EntityApiInstanceMut,
+    components: ComponentsIterator<(Write<WallSpawnerComponent>,)>,
 ) {
     let log = api::get::<LogApi>();
+    let mut assets = entity_api.the_truth_assets();
 
-    for (ld, light, graph) in components {
-        let mut graph = api::with_ctx_mut::<GraphInterpreterApi>(graph.gr);
+    for (entity, wall_spawner) in components {
+        if !wall_spawner.has_run {
+            let mut root = entity;
 
-        if let Some(distance_to_wall) = graph.read_variable_f32("Dist") {
-            let hue = (f32::sin(0.4 * distance_to_wall) + 1.0) / 2.0;
-            log.info(&format!("WOHOO: {} {}", hue, ld.intensity));
-            let color = Rgb::from_color(&Hsv::new((hue * 360.0) as f64, 1.0, ld.intensity as f64));
-            light.color_rgb = Vec3 {
-                x: color.r as f32 / 255.0,
-                y: color.g as f32 / 255.0,
-                z: color.b as f32 / 255.0,
-            };
+            loop {
+                log.info(&format!("Hi {:#?}", unsafe { root.u64_ }));
+
+                let new_root = entity_api.parent(root);
+                if unsafe { new_root.u64_ } == 0 {
+                    break;
+                } else {
+                    root = new_root;
+                }
+            }
+
+            let asset_root = entity_api.asset(entity);
+
+            log.info(&format!("Hi {:#?}", unsafe {
+                asset_root.__bindgen_anon_1.u64_
+            }));
+
+            let player = assets.asset_from_path(asset_root, "player.entity");
+
+            log.info(&format!("Hi {:#?}", unsafe {
+                player.__bindgen_anon_1.u64_
+            }));
+            wall_spawner.has_run = true;
         }
     }
 }
 
 fn register_light_engine(entity_api: &mut EntityApiInstanceMut) {
-    entity_api.register_engine("Light Distance Engine", engine_update);
+    entity_api.register_engine("Wall Spawner Engine", engine_update);
 }
 
 tm_plugin!(|reg: &mut RegistryApi| {
     api::register::<LogApi>(reg);
+    api::register::<TheTruthAssetsApi>(reg);
     api::register::<GraphInterpreterApi>(reg);
 
-    reg.add_or_remove_component::<LightDistanceComponent2>();
+    reg.add_or_remove_component::<WallSpawnerComponent>();
 
     add_or_remove_entity_simulation!(reg, register_light_engine);
 });
