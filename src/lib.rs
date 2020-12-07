@@ -1,15 +1,17 @@
 use tm_derive::Component;
 use tm_rs::{
-    add_or_remove_entity_simulation, api,
-    component::{ComponentsIterator, Read, Write},
-    components::{graph::GraphComponent, light::LightComponent},
-    entity::{EntityApi, EntityApiInstanceMut},
-    ffi::{tm_tt_id_t, tm_tt_id_t__bindgen_ty_1},
-    graph_interpreter::GraphInterpreterApi,
-    log::LogApi,
-    the_truth::TheTruthApi,
-    the_truth_assets::TheTruthAssetsApi,
-    tm_plugin, Vec3,
+    add_or_remove_entity_simulation,
+    api::{
+        self,
+        application::ApplicationApi,
+        entity::{EntityApi, EntityApiInstanceMut},
+        graph_interpreter::GraphInterpreterApi,
+        log::LogApi,
+        the_truth::TheTruthApi,
+        the_truth_assets::TheTruthAssetsApi,
+    },
+    component::{ComponentsIterator, Write},
+    tm_plugin,
 };
 
 #[derive(Copy, Clone, Default, Component)]
@@ -22,34 +24,17 @@ fn engine_update(
     components: ComponentsIterator<(Write<WallSpawnerComponent>,)>,
 ) {
     let log = api::get::<LogApi>();
-    let mut assets = entity_api.the_truth_assets();
+    let asset_root = api::get::<ApplicationApi>().application().asset_root();
+    let assets = entity_api.the_truth_assets();
 
     for (entity, wall_spawner) in components {
         if !wall_spawner.has_run {
-            let mut root = entity;
-
-            loop {
-                log.info(&format!("Hi {:#?}", unsafe { root.u64_ }));
-
-                let new_root = entity_api.parent(root);
-                if unsafe { new_root.u64_ } == 0 {
-                    break;
-                } else {
-                    root = new_root;
-                }
-            }
-
-            let asset_root = entity_api.asset(entity);
-
-            log.info(&format!("Hi {:#?}", unsafe {
-                asset_root.__bindgen_anon_1.u64_
-            }));
-
             let player = assets.asset_from_path(asset_root, "player.entity");
 
-            log.info(&format!("Hi {:#?}", unsafe {
-                player.__bindgen_anon_1.u64_
-            }));
+            log.info(&format!("Hi {:?}", player));
+
+            //entity_api.
+
             wall_spawner.has_run = true;
         }
     }
@@ -63,6 +48,7 @@ tm_plugin!(|reg: &mut RegistryApi| {
     api::register::<LogApi>(reg);
     api::register::<TheTruthAssetsApi>(reg);
     api::register::<GraphInterpreterApi>(reg);
+    api::register::<ApplicationApi>(reg);
 
     reg.add_or_remove_component::<WallSpawnerComponent>();
 
