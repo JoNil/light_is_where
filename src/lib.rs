@@ -17,6 +17,9 @@ use tm_rs::{
 #[derive(Copy, Clone, Default, Component)]
 struct WallSpawnerComponent {
     has_run: bool,
+
+    #[property(default = 0.0)]
+    distance: f32,
 }
 
 fn engine_update(
@@ -25,6 +28,7 @@ fn engine_update(
 ) {
     let log = api::get::<LogApi>();
     let asset_root = api::get::<ApplicationApi>().application().asset_root();
+    let the_truth = entity_api.the_truth();
     let assets = entity_api.the_truth_assets();
 
     for (entity, wall_spawner) in components {
@@ -33,7 +37,9 @@ fn engine_update(
 
             log.info(&format!("Hi {:?}", player_asset_id));
 
-            let wall_entity = entity_api.create_entity_from_asset(player_asset_id);
+            let player_id = the_truth.read(player_asset_id).unwrap().get_subobject(4);
+
+            let wall_entity = entity_api.create_entity_from_asset(player_id);
 
             wall_spawner.has_run = true;
         }
