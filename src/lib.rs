@@ -37,7 +37,7 @@ fn engine_update(
 
             log.info(&format!("Hi {:?}", player_asset_id));
 
-            let player_id = the_truth.read(player_asset_id).unwrap().get_subobject(4);
+            let player_id = the_truth.read(player_asset_id).unwrap().get_subobject(3);
 
             let wall_entity = entity_api.create_entity_from_asset(player_id);
 
