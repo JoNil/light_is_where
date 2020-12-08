@@ -37,8 +37,15 @@ fn engine_update(
 
             log.info(&format!("Hi {:?}", player_asset_id));
 
+            if let Some(type_name) = the_truth.type_name(player_asset_id) {
+                log.info(&format!("{}", &type_name));
+            }
+
             let player_id = the_truth.read(player_asset_id).unwrap().get_subobject(3);
 
+            if let Some(type_name) = the_truth.type_name(player_id) {
+                log.info(&format!("{}", &type_name));
+            }
             let wall_entity = entity_api.create_entity_from_asset(player_id);
 
             wall_spawner.has_run = true;
