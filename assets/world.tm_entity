@@ -92,38 +92,6 @@ children: [
 		sort_order: 101
 	}
 	{
-		__uuid: "95caeeac-73fe-794d-59db-c2d6b588399a"
-		__prototype_type: "tm_entity"
-		__prototype_uuid: "1d6fced5-4f29-04d8-58d5-3915f1ab1e23"
-		name: "player"
-		components__instantiated: [
-			{
-				__type: "tm_link_component"
-				__uuid: "637b8eb0-d23c-9a3b-052e-5316fb7e30e2"
-				__prototype_type: "tm_link_component"
-				__prototype_uuid: "3aff22df-547f-ccdc-e1f2-3bd54c8882f0"
-				position: {
-					__uuid: "b177b512-4e72-300a-27d7-568e1c4317b3"
-					__prototype_type: "tm_position"
-					__prototype_uuid: "a201189a-d612-faab-279e-3de34a576e77"
-					x: 2.679311275482178
-					z: -1.387298583984375
-				}
-				rotation: {
-					__uuid: "6231dc98-3d05-04a3-d326-4363f960a29b"
-					__prototype_type: "tm_rotation"
-					__prototype_uuid: "c6461b39-0dc0-3a14-f9d7-19014d21a5bb"
-				}
-				scale: {
-					__uuid: "14d1bffd-816f-d908-f76b-2552aac89683"
-					__prototype_type: "tm_scale"
-					__prototype_uuid: "181b57e6-d204-c4e8-582b-59250f2a2519"
-				}
-			}
-		]
-		sort_order: 102
-	}
-	{
 		__uuid: "70863e4d-1cd4-c24c-0c0f-ba4e50186fb6"
 		__prototype_type: "tm_entity"
 		__prototype_uuid: "72ac0bb5-9376-9a69-cd9c-d07408df94f1"
@@ -150,6 +118,38 @@ children: [
 					__uuid: "767a439d-69f7-fb92-ecce-e92699362b0e"
 					__prototype_type: "tm_scale"
 					__prototype_uuid: "5ac22453-fb7a-665f-48e9-1c0157b1bca0"
+				}
+			}
+		]
+		sort_order: 102
+	}
+	{
+		__uuid: "8a25b261-07e3-444c-9219-466de7e3ef6d"
+		__prototype_type: "tm_entity"
+		__prototype_uuid: "1d6fced5-4f29-04d8-58d5-3915f1ab1e23"
+		name: "player"
+		components__instantiated: [
+			{
+				__type: "tm_link_component"
+				__uuid: "ca6f1757-92f0-c4b0-6481-1ffb148f2347"
+				__prototype_type: "tm_link_component"
+				__prototype_uuid: "3aff22df-547f-ccdc-e1f2-3bd54c8882f0"
+				position: {
+					__uuid: "25c1a9e9-1c16-c798-8308-c1a6d1335c96"
+					__prototype_type: "tm_position"
+					__prototype_uuid: "a201189a-d612-faab-279e-3de34a576e77"
+					x: 0.1338341236114502
+					z: -1.688200712203979
+				}
+				rotation: {
+					__uuid: "ed270d34-ec9b-ec1c-d71d-0a9e55ab6579"
+					__prototype_type: "tm_rotation"
+					__prototype_uuid: "c6461b39-0dc0-3a14-f9d7-19014d21a5bb"
+				}
+				scale: {
+					__uuid: "d32feafe-4fe3-72b8-d674-625b825149d4"
+					__prototype_type: "tm_scale"
+					__prototype_uuid: "181b57e6-d204-c4e8-582b-59250f2a2519"
 				}
 			}
 		]

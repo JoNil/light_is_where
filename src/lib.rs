@@ -29,11 +29,11 @@ fn engine_update(
 
     for (entity, wall_spawner) in components {
         if !wall_spawner.has_run {
-            let player = assets.asset_from_path(asset_root, "player.entity");
+            let player_asset_id = assets.asset_from_path(asset_root, "player.entity");
 
-            log.info(&format!("Hi {:?}", player));
+            log.info(&format!("Hi {:?}", player_asset_id));
 
-            //entity_api.
+            let wall_entity = entity_api.create_entity_from_asset(player_asset_id);
 
             wall_spawner.has_run = true;
         }
